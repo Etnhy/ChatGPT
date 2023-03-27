@@ -14,7 +14,7 @@ class OpenAIService {
     
     
     public func sendMessage(message: String)-> AnyPublisher<OpenAICompletionsResponse, Error> {
-        let body = OpenAICompletionBody(model: "text-davinci-003", prompt: message, temperature: 0.7, max_tokens: 2048)
+        let body = OpenAICompletionBody(model: "text-davinci-003", prompt: message, temperature: 0.7, max_tokens: 3000)
         let headers: HTTPHeaders = [
             "Authorization":"Bearer \(Constants.openAIAPIkey)"]
         return Future {[weak self] promise in
