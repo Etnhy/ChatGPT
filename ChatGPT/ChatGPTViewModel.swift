@@ -12,23 +12,22 @@ class ChatGPTViewModel: ObservableObject {
     @Published var chatMessage: [ChatMessage] = []
     @Published var cancellables = Set<AnyCancellable>()
     @Published var messageText: String = " "
+    @Published var isApiKey: Bool = false
+    @Published var apiKey: String = " "
 
     private let openAIService = OpenAIService()
     
     
     
    public func sendMessage() {
-       print(chatMessage.count)
         let myMEssage = ChatMessage(
             id: UUID().uuidString, content: messageText,
             dataCreated: Date(), sender: .me)
         chatMessage.append(myMEssage)
-        openAIService.sendMessage(message: messageText).sink { completion in
+        openAIService.sendMessage(apiKey: apiKey,message: messageText).sink { completion in
         } receiveValue: { response in
             guard let textResponse = response.choices.first?.text.trimmingCharacters(
                 in: .whitespacesAndNewlines.union(.init(charactersIn: "\""))) else { return }
-            
-            print(textResponse)
             let gptMessage = ChatMessage(
                 id: response.id, content: textResponse,
                 dataCreated: Date(), sender: .gpt)
@@ -37,6 +36,13 @@ class ChatGPTViewModel: ObservableObject {
         }
         .store(in: &cancellables)
         messageText = " "
+    }
+    
+    public func setApiKey() {
+        if apiKey != " " && !apiKey.isEmpty {
+            isApiKey = true
+        }
+        print(apiKey)
     }
     
 }

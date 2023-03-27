@@ -14,6 +14,20 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Button {
+                vm.isApiKey = false
+                vm.chatMessage = []
+            } label: {
+                HStack {
+                    Image(systemName: "arrowshape.turn.up.backward.fill")
+                    Text("Back to welcome view")
+                        .bold()
+                        
+                    Spacer()
+                }.foregroundColor(.black)
+                    .padding()
+            }
+            
             ScrollView {
                 LazyVStack {
                     ForEach(vm.chatMessage, id: \.id) { message in
@@ -27,7 +41,6 @@ struct ContentView: View {
                     .padding()
                     .background(.gray.opacity(0.3))
                     .cornerRadius(12)
-                
                 Button {
                     vm.sendMessage()
                 } label: {
@@ -37,12 +50,11 @@ struct ContentView: View {
                         .background(.black)
                         .cornerRadius(12)
                 }
-
             }
             .padding()
         }
-
     }
+    
     func messageView(message: ChatMessage) -> some View {
         HStack {
             if message.sender == .me { Spacer() }
@@ -64,21 +76,3 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
-struct ChatMessage {
-    let id: String
-    let content: String
-    let dataCreated: Date
-    let sender: MessageSender
-}
-
-enum MessageSender {
-    case me
-    case gpt
-}
-extension ChatMessage {
-    static let sampleMessage = [
-        ChatMessage(id: UUID().uuidString, content: "Sample message from me", dataCreated: Date(), sender: .me),
-        ChatMessage(id: UUID().uuidString, content: "Sample message from gpt", dataCreated: Date(), sender: .gpt),
-        ChatMessage(id: UUID().uuidString, content: "Sample message from me", dataCreated: Date(), sender: .me),
-        ChatMessage(id: UUID().uuidString, content: "Sample message from gpt", dataCreated: Date(), sender: .gpt),]
-}

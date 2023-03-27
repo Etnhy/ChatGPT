@@ -12,8 +12,16 @@ struct ChatGPTApp: App {
     @ObservedObject var vm = ChatGPTViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(vm)
+            if vm.isApiKey {
+                ContentView()
+                    .environmentObject(vm)
+
+            } else {
+                WelcomeView()
+                    .environmentObject(vm)
+                    
+            }
         }
+
     }
 }
