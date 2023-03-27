@@ -10,29 +10,26 @@ import Combine
 
 struct ContentView: View {
     
-    @State var chatMessage: [ChatMessage] = []
-    @State var messageText: String = " "
-    @State var cancellables = Set<AnyCancellable>()
-    let openAIService = OpenAIService()
+    @EnvironmentObject var vm: ChatGPTViewModel
     
     var body: some View {
         VStack {
             ScrollView {
                 LazyVStack {
-                    ForEach(chatMessage, id: \.id) { message in
+                    ForEach(vm.chatMessage, id: \.id) { message in
                         messageView(message: message)
                     }
                 }
                 .padding()
             }
             HStack {
-                TextField("Enter a message", text: $messageText)
+                TextField("Enter a message", text: $vm.messageText)
                     .padding()
                     .background(.gray.opacity(0.3))
                     .cornerRadius(12)
                 
                 Button {
-                    sendMessage()
+                    vm.sendMessage()
                 } label: {
                     Text("Send")
                         .foregroundColor(.white)
@@ -55,31 +52,14 @@ struct ContentView: View {
                 .background(message.sender == .me ? .blue : .gray.opacity(0.2))
                 .cornerRadius(16)
             if message.sender == .gpt { Spacer() }
-
-//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
         }
-    }
-    func sendMessage() {
-        let myMEssage = ChatMessage(
-            id: UUID().uuidString, content: messageText,
-            dataCreated: Date(), sender: .me)
-        chatMessage.append(myMEssage)
-        openAIService.sendMessage(message: messageText).sink { completion in
-        } receiveValue: { response in
-            guard let textResponse = response.choices.first?.text.trimmingCharacters(in: .whitespacesAndNewlines.union(.init(charactersIn: "\""))) else { return }
-            let gptMessage = ChatMessage(
-                id: response.id, content: textResponse,
-                dataCreated: Date(), sender: .gpt)
-            chatMessage.append(gptMessage)
-        }
-        .store(in: &cancellables)
-        messageText = " "
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ChatGPTViewModel())
     }
 }
 
