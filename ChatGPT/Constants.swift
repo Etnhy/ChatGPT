@@ -10,5 +10,10 @@ import Foundation
 // MARK: - Nested types
 
  enum Constants {
-    static let openAIAPIkey = "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"
+     static let openAIAPIkey: String = {
+         guard let key = Bundle.main.object(forInfoDictionaryKey: "OPENAI_KEY") as? String else {
+             fatalError(" API KEY ERROR")
+         }
+         return "\(key)"
+     }()
 }
