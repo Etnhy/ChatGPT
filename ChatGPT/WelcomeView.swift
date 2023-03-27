@@ -31,6 +31,7 @@ struct WelcomeView: View {
                 }
                     HStack {
                         TextField("Enter OpenAI key", text: $vm.apiKey)
+                            .foregroundColor(.white)
                             .padding()
                             .background(.gray.opacity(0.3))
                             .cornerRadius(12)
@@ -43,11 +44,12 @@ struct WelcomeView: View {
                                 .background(.green.opacity(0.7))
                                 .cornerRadius(12)
                         }
+                        
                     }
+                
             }
                 .padding()
         }
-//        .background(Color.black, ignoresSafeAreaEdges: .all)
     }
     
 }

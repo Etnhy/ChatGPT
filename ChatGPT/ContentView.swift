@@ -32,7 +32,7 @@ struct ContentView: View {
                 
                 ScrollView {
                     LazyVStack {
-                        ForEach(ChatMessage.sampleMessage, id: \.id) { message in
+                        ForEach(vm.chatMessage, id: \.id) { message in
                             messageView(message: message)
                         }
                     }

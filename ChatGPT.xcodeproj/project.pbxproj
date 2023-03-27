@@ -11,7 +11,6 @@
 		7AA665B229CF054B00DC6043 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA665B129CF054B00DC6043 /* ContentView.swift */; };
 		7AA665B429CF054C00DC6043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AA665B329CF054C00DC6043 /* Assets.xcassets */; };
 		7AA665B729CF054C00DC6043 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AA665B629CF054C00DC6043 /* Preview Assets.xcassets */; };
-		7AC6504029D1FC9700FB0D4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6503F29D1FC9700FB0D4E /* Constants.swift */; };
 		7AC6504229D1FCF200FB0D4E /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6504129D1FCF200FB0D4E /* OpenAIService.swift */; };
 		7AC6504529D1FD9400FB0D4E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7AC6504429D1FD9400FB0D4E /* Alamofire */; };
 		7ACDDA9729D2322F002C4C76 /* ChatGPTViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACDDA9629D2322F002C4C76 /* ChatGPTViewModel.swift */; };
@@ -25,7 +24,6 @@
 		7AA665B129CF054B00DC6043 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7AA665B329CF054C00DC6043 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7AA665B629CF054C00DC6043 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7AC6503F29D1FC9700FB0D4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7AC6504129D1FCF200FB0D4E /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		7ACDDA9529D23022002C4C76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7ACDDA9629D2322F002C4C76 /* ChatGPTViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTViewModel.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 		7ACDDA9829D23529002C4C76 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7AC6503F29D1FC9700FB0D4E /* Constants.swift */,
 				7ACDDA9929D2353B002C4C76 /* ChatMessage.swift */,
 			);
 			path = Models;
@@ -174,7 +171,6 @@
 				7AA665B229CF054B00DC6043 /* ContentView.swift in Sources */,
 				7AA665B029CF054B00DC6043 /* ChatGPTApp.swift in Sources */,
 				7ACDDA9A29D2353B002C4C76 /* ChatMessage.swift in Sources */,
-				7AC6504029D1FC9700FB0D4E /* Constants.swift in Sources */,
 				7AC6504229D1FCF200FB0D4E /* OpenAIService.swift in Sources */,
 				7ACDDA9C29D23582002C4C76 /* WelcomeView.swift in Sources */,
 			);
@@ -319,7 +315,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OPENAI_KEY = "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";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mahlena.ChatGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -350,7 +345,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OPENAI_KEY = "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";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mahlena.ChatGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
