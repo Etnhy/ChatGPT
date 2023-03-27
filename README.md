@@ -7,7 +7,7 @@ ask a question - get an answer from AI
 
 
 
-<table style="width:100%">
+<table style="width:50%">
   <tr>
     <td> ChatGPT </td>
 
